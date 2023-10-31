@@ -7,4 +7,11 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyNamespacePackagesService">
+    <option name="namespacePackageFolders">
+      <list>
+        <option value="$MODULE_DIR$/Python_ПЗ_Модуль_11_ООП_ч_1.1" />
+      </list>
+    </option>
+  </component>
 </module>
