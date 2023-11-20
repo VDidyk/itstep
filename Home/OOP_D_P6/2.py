@@ -1,13 +1,20 @@
-# Створіть базовий клас «Фігура» з методом для підрахунку
-# площі. Створіть похідні класи: прямокутник, коло, прямокутний трикутник, трапеція, зі своїми методами для підрахунку
-# площі
+# Для класів із першого завдання перевизначте магічні
+# методи int (повертає площу) та str (повертає інформацію
+# про фігуру).
+
 import math
 from dataclasses import dataclass
 
 
 class Figure:
+    def __int__(self):
+        return int(self._calculate())
+
+    def __str__(self):
+        return f"{self.__class__.__name__} area is {self._calculate()}"
+
     def get_area(self):
-        print(f"{self.__class__.__name__} area is {self._calculate()}")
+        print(self)
 
     def _calculate(self):
         raise NotImplementedError
@@ -57,3 +64,5 @@ figures = [
 ]
 
 [x.get_area() for x in figures]
+
+print(int(figures[0]))
