@@ -8,8 +8,9 @@ class MyMeta(type):
             'x', 'y'
         ]
 
-        if not all(attr in dct for attr in required_attrs):
-            raise AttributeError
+        for a in required_attrs:
+            if a not in dct:
+                raise AttributeError(f"{a} attribute is required!")
 
         return super().__new__(cls, name, base, dct)
 
@@ -17,6 +18,7 @@ class MyMeta(type):
 class MyClass(metaclass=MyMeta):
     x = 1
     y = 1
+    pass
 
 
 m = MyClass()
