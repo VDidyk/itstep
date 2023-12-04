@@ -15,38 +15,38 @@
 
 class Stack:
     def __init__(self, limit):
-        self.stack = []
+        self.__stack = []
         self.limit = limit
 
     def is_empty(self):
-        return len(self.stack) == 0
+        return len(self.__stack) == 0
 
     def is_full(self):
-        return len(self.stack) == self.limit
+        return len(self.__stack) == self.limit
 
     def push(self, item):
-        if len(self.stack) >= self.limit:
+        if len(self.__stack) >= self.limit:
             raise Exception("Stack is full")
-        self.stack.append(item)
+        self.__stack.append(item)
 
     def pop(self):
-        if len(self.stack) <= 0:
+        if len(self.__stack) <= 0:
             raise Exception("Stack is empty")
-        return self.stack.pop()
+        return self.__stack.pop()
 
     def size(self):
-        return len(self.stack)
+        return len(self.__stack)
 
     def clear(self):
-        self.stack = []
+        self.__stack = []
 
     def peek(self):
-        if len(self.stack) <= 0:
+        if len(self.__stack) <= 0:
             raise Exception("Stack is empty")
-        return self.stack[-1]
+        return self.__stack[-1]
 
     def __str__(self):
-        return str(self.stack)
+        return str(self.__stack)
 
 
 stack = Stack(10)
