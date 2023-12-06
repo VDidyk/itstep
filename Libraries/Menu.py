@@ -5,13 +5,16 @@ class Menu:
     def append(self, name, callback):
         self.__items.append((name, callback))
 
-    def start(self):
+    def show_menu(self):
         for i, val in enumerate(self.__items):
             print(f"{i + 1}. {val[0]}")
 
-            print(f"0. Exit")
+        print(f"0. Exit")
 
+    def start(self):
         while True:
+            self.show_menu()
+
             choice = int(input("Make your choice: "))
 
             if choice == 0:
@@ -23,3 +26,5 @@ class Menu:
                 self.__items[choice][1]()
             else:
                 print("Wrong option.")
+
+            print("=============")
