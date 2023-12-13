@@ -12,7 +12,7 @@ from Menu import Menu
 
 
 class DataWorker:
-    file_path = '1'
+    file_path = '2'
 
     @staticmethod
     def save(data):
