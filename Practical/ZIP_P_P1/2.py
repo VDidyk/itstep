@@ -35,15 +35,15 @@ class DataWorker:
             return None
 
 
-@dataclass
 class Container:
-    _list = []
+    def __init__(self):
+        self._list = []
 
     def show(self):
         print(self._list)
 
     def append(self):
-        self._list = input("Enter the value: ")
+        self._list.append(input("Enter the value: "))
 
     def remove(self):
         try:
