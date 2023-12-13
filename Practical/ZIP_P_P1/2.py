@@ -47,7 +47,7 @@ class Container:
 
     def remove(self):
         try:
-            del self._list[int(input("Enter the index"))]
+            del self._list[int(input("Enter the index: "))]
         except Exception:
             pass
 
