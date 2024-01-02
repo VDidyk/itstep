@@ -16,7 +16,7 @@ def receive_message(client_socket):
             break
 
 
-host = '127.0.0.1'
+host = '185.65.247.209'
 port = 65432
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
