@@ -1,0 +1,4 @@
+Country,City,Weather
+USA,New York,Sunny
+France,Paris,Rainy
+Japan,Tokyo,Cloudy
