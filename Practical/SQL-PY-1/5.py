@@ -1,6 +1,7 @@
-# Додайте до четвертого завдання можливість вносити,
-# видаляти, оновлювати дані через інтерфейс додатка. Користувач не може ввести запит INSERT, UPDATE, DELETE
-# безпосередньо.
+# Додайте до додатку можливість зберігати результати
+# роботи фільтрів у файл. Наприклад, результат роботи
+# фільтра для відображення усіх людей або результат роботи
+# фільтра з відображення людей з одного міста.
 
 import json
 from sqlalchemy import create_engine, Column, Integer, String, Sequence, Date
@@ -44,11 +45,21 @@ session = Session()
 session.commit()
 
 
+def write_to_file(data):
+    file_name = "logs.txt"
+
+    with open(file_name, 'a') as file:
+        file.write(str(data) + '\n')
+
+
 def show_rows(result):
     rows = result.fetchall()
 
     if rows:
-        [print(row) for row in rows]
+        for row in rows:
+            write_to_file(row)
+            print(row)
+
     else:
         print("No result")
 
@@ -95,6 +106,7 @@ def add_person():
     session.add(person)
     session.commit()
 
+
 def delete_person():
     rows = session.execute(text(f"Select * from people order by id")).fetchall()
     people = []
@@ -113,6 +125,7 @@ def delete_person():
 
     else:
         print("No result")
+
 
 def change_field():
     rows = session.execute(text(f"Select * from people order by id")).fetchall()
