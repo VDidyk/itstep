@@ -1,8 +1,6 @@
-# Модифікуйте перше завдання так, щоб користувач не
-# міг вводити запит, а користувався готовими фільтрами.
-# Наприклад: відображення усіх людей, відображення усіх
-# людей з одного міста (користувач задає з клавіатури як значення), відображення усіх людей з однієї країни (користувач задає з
-# клавіатури як параметр).
+# Модифікуйте третє завдання, щоб фільтр для показу міг бути комплексним. Наприклад, користувач може
+# виставити фільтр на країну та місто, після чого відобразяться люди, для яких спрацює цей комплексний
+# фільтр. Підтримайте умову АБО.
 
 import json
 from sqlalchemy import create_engine, Column, Integer, String, Sequence, Date
@@ -69,10 +67,28 @@ def filter_by_country(country):
     show_rows(session.execute(text(f"Select * from people where lower(country)='{country.lower()}'")))
 
 
+def filter_by_city_and_country(city, country):
+    if not country or not city:
+        return
+
+    show_rows(session.execute(text(f"Select * from people where lower(country)='{country.lower()}' and lower(city)='{city.lower()}'")))
+
+
+def filter_by_city_or_country(city, country):
+    if not country or not city:
+        return
+
+    show_rows(session.execute(text(f"Select * from people where lower(country)='{country.lower()}' or lower(city)='{city.lower()}'")))
+
+
 menu = Menu()
 
 menu.append("Filter by city", lambda: filter_by_city(input("Enter the city: ")))
 menu.append("Filter by country", lambda: filter_by_country(input("Enter the country: ")))
+menu.append("Filter by city and country",
+            lambda: filter_by_city_and_country(input("Enter the city: "), input("Enter the country: ")))
+menu.append("Filter by city or country",
+            lambda: filter_by_city_or_country(input("Enter the city: "), input("Enter the country: ")))
 
 menu.start()
 
