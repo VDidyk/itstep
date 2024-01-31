@@ -12,9 +12,7 @@
 12. exists counter
 13. SETEX message 60 "Hello, Redis!"
 14. FLUSHALL
-15. GEOADD geo_locations 30.2672 -97.7431 "Austin"
-    GEOADD geo_locations 34.0522 -118.2437 "Los Angeles"
-    GEOADD geo_locations 40.7128 -74.0060 "New York"
+15. GEOADD locations -97.7431 30.2672 "Austin"
 15. HSET students John 85
     HSET students Alice 92
     HSET students Bob 78
