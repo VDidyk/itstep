@@ -29,11 +29,11 @@ class WebSite:
     def add_web_page(self):
         page = WebPage()
 
-        title = 'Test'
+        title = ''
         while not title:
             title = input("Enter the title: ")
 
-        content = 'Content'
+        content = ''
         while not content:
             content = input("Enter the content: ")
 
@@ -55,11 +55,11 @@ class WebSite:
 
     @staticmethod
     def create() -> 'WebSite':
-        name = 'Test'
+        name = ''
         while not name:
             name = input("Enter the name: ")
 
-        url = 'https://www.localhost.com'
+        url = ''
 
         while not url:
             url = input("Enter the url: ")
